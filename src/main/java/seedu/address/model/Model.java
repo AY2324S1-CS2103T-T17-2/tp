@@ -5,14 +5,14 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.company.Company;
+import seedu.address.model.person.Person;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
-    Predicate<Company> PREDICATE_SHOW_ALL_COMPANIES = unused -> true;
+    Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -53,36 +53,35 @@ public interface Model {
     ReadOnlyAddressBook getAddressBook();
 
     /**
-     * Returns true if a company with the same identity as {@code company} exists in the address book.
+     * Returns true if a person with the same identity as {@code person} exists in the address book.
      */
-    boolean hasCompany(Company company);
+    boolean hasPerson(Person person);
 
     /**
-     * Deletes the given company.
-     * The company must exist in the address book.
+     * Deletes the given person.
+     * The person must exist in the address book.
      */
-    void deleteCompany(Company target);
+    void deletePerson(Person target);
 
     /**
-     * Adds the given company.
-     * {@code company} must not already exist in the address book.
+     * Adds the given person.
+     * {@code person} must not already exist in the address book.
      */
-    void addCompany(Company company);
+    void addPerson(Person person);
 
     /**
-     * Replaces the given company {@code target} with {@code editedCompany}.
+     * Replaces the given person {@code target} with {@code editedPerson}.
      * {@code target} must exist in the address book.
-     * The company identity of {@code editedCompany} must not be the same as another existing company in the address
-     * book.
+     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
      */
-    void setCompany(Company target, Company editedCompany);
+    void setPerson(Person target, Person editedPerson);
 
-    /** Returns an unmodifiable view of the filtered company list */
-    ObservableList<Company> getFilteredCompanyList();
+    /** Returns an unmodifiable view of the filtered person list */
+    ObservableList<Person> getFilteredPersonList();
 
     /**
-     * Updates the filter of the filtered company list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
-    void updateFilteredCompanyList(Predicate<Company> predicate);
+    void updateFilteredPersonList(Predicate<Person> predicate);
 }
