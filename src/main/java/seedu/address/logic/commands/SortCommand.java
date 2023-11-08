@@ -16,7 +16,7 @@ public class SortCommand extends Command {
             + "order";
 
     public static final String MESSAGE_USAGE =
-            "Format: " + COMMAND_WORD + " <SORT_ORDER>. "
+            "Format: " + COMMAND_WORD + " SORT_ORDER. "
             + "Valid ascending sort orders: a, asc, ascending. Valid descending sort orders:  d, desc, descending, \n"
             + "Example: " + COMMAND_WORD + " ascending";
 
