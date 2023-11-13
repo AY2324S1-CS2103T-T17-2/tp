@@ -7,6 +7,7 @@ title: User Guide
 
 _Master Your Internship Journey: Every Deadline, Every Detail._
 
+
 It's that time of the year again! You're scrolling through LinkedIn to discover internship opportunities and tackling programming problems non-stop to prepare for your coding interviews, all in pursuit of securing a summer internship. To increase your chances, you've mass-applied to multiple companies, and now you're struggling to keep track of all your applications.
 
 Well, fret not! LinkMeIn is here to help you! LinkMeIn is a **desktop application** specifically designed for all of you, NUS School Of Computing's Computer Science students, to effectively manage and track your internship applications.
