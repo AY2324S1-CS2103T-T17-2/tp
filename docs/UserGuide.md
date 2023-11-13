@@ -606,26 +606,27 @@ An example of an error message is shown below.
 _Seeking an internship but worried about double-applying? 
 Our duplicate detection swiftly ensures you never submit the same application twice!_
 
-How does LinkMeIn determine if a company is a duplicate? If you try to **add** a company with the same **company name**,
-**role**, and **deadline** as an existing application in LinkMeIn, you will see an error message in the command box information 
-you of the duplicate company. 
+If you attempt to **add** or **edit** an application, you might accidentally create a duplicate entry with the same **company name**, **role**, and **deadline** as an existing company in LinkMeIn. An error message will be displayed in the Message Box, informing you of the **company name**, **role** and **deadline** of that duplicate company.
 
-- LinkMeIn's duplicate check is **case-insensitive** 
+<div markdown="block" class="alert alert-info">
+**:information_source: Note:**<br>
+* LinkMeIn's duplicate check is case-insensitive. e.g. `tiktok` is the same as `TikTok`.
+</div>
 
-
-**Example:**
-Adding a company with the same fields as an existing company
+**Example 1:**
+Suppose you attempt to add a company with the **exact same company and recruiter information** as an existing entry in LinkMeIn, you will be notified of the duplicate company, as seen below. 
 
 ![img.png](images/duplicate-detection/add-command/duplicate-exact-match.png)
 
-**Example:**
-Adding a company with the same company name, deadline and role but different recruiter's information or application status
+**Example 2:**
+If you attempt to add a company with the **same company name, role and deadline**, but different recruiter information, you will be see an error message similar to that in Example 1. However, in this case, LinkMeIn will also prompt you to edit the parameter that differs from the duplicate company, recognizing that you may have accidentally used the `add` command instead of the `edit` command.
 
 ![img.png](images/duplicate-detection/add-command/duplicate-partial-match.png)
 
+**Example 3:**
 LinkMeIn's duplicate check does not stop with adding entries. If you attempt to **edit** an application, creating a 
-duplicate entry with the same company, role, and deadline as an existing application in LinkMeIn, 
-an error message will be displayed in the command box, notifying you of the duplicate company as seen below. 
+duplicate entry with the **same company name, role, and deadline** as an existing application in LinkMeIn, 
+an error message will be displayed in the Message Box, notifying you of the duplicate company as seen below. 
 
 ![img.png](images/duplicate-detection/edit-command/duplicate-edit.png)
 
@@ -637,8 +638,7 @@ options to find, list, filter, and sort companies, offering you a comprehensive 
 
 ### Finding a Company: `find`
 
-_You've applied to many companies, and now you want to track internship applications for a particular
-company. Use the `find` command to quickly locate the company you want!_
+_You've applied to many companies, and now you wish to monitor your internship applications for a specific company. Use the `find` command for a swift and efficient way to locate the company you want!_
 
 **Format:** `find KEYWORD [MORE_KEYWORDS]...`
 > KEYWORD must be at least 1 character long. Multiple keywords can be provided.
@@ -647,12 +647,12 @@ company. Use the `find` command to quickly locate the company you want!_
 **:information_source: Notes:**<br>
 * The `find` command searches only the company name.
 * Companies with names that contain **any** of the keywords will be returned.
-* The case of the keyword doesn't matter (e.g. `tiktok` will match `TikTok`).
+* The keyword is case-insensitive (e.g. `tiktok` will match `TikTok`).
 * The order of your keywords doesn't matter (e.g. `tiktok google` will match `google tiktok`).
 </div>
 
-<div markdown="block" class="alert alert-info">
-**:information_source: Tip:**<br>
+<div markdown="block" class="alert alert-success">
+**:bulb: Useful Tip:**<br>
 * You don't have to type the full name of the company. Partial names work too! For example, `tik` will match 
 `tiktok`. Use this to find companies quickly!
 </div>
@@ -670,7 +670,7 @@ shown. And that is it! You have found the company you wanted.
 
 [&uarr; Back to Table of Contents](#table-of-contents)
 
-### Listing All Contacts : `list`
+### Listing All Contacts: `list`
 
 _You've found the specific company you wanted using the find command earlier, and now you want to see all of your applications in one list again. You can do so easily with the `list` command!_
 
@@ -684,7 +684,7 @@ _You've found the specific company you wanted using the find command earlier, an
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Note:**<br>
-* Whenever LinkMeIn is started, you will see the full list of companies displayed by default (i.e. `list` command is executed automatically).
+* Upon launching LinkMeIn, you will see your full list of companies. (i.e. `list` command is executed automatically).
 </div>
 
 [&uarr; Back to Table of Contents](#table-of-contents)
@@ -698,15 +698,20 @@ Filter the list of companies by their application status using the `filter` comm
 
 > [**APPLICATION_STATUS**](#application-status-parameter-description) should be one of the following: `PA`, `PI`, `PO`, `A`, `R`.
 
+<div markdown="block" class="alert alert-info">
+**:information_source: Note:**<br>
+* LinkMeIn's filter command will always filter from the full list of companies. This means that if you have previously done `find ds`, doing filter next, will not filter from the list of companies that you have searched for. 
+</div>
+
 **Example:**
 
-**Step 1:** You want to prepare for the upcoming interviews you have received. 
+**Step 1:** You wish to prepare for the upcoming interviews that you have secured.
 
 **Step 2:** Simply type `filter s/PI` to filter the list of companies to show only companies with status "Pending Interview" and press `Enter`.
 
 ![img.png](images/filter-command/FilterByPI.png)
 
-**Step 3:** You can then view all the companies that you have pending interviews for from the Company List Panel.
+**Step 3:** You can then check the Company List Panel for all the companies where you have pending interviews. 
 
 ![img.png](images/filter-command/AfterFilterCommand.png)
 
@@ -726,6 +731,7 @@ arrange your list of applications based on their deadlines!_
 **Format:** `sort SORT_ORDER`
 > SORT_ORDER should be one of the following: `ascending`, `a`, `asc` for ascending order, and `descending`, `d`, `desc` for descending order.
 
+
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes:**<br>
 * Ascending order means that the nearest deadlines will be shown first.
@@ -733,8 +739,8 @@ arrange your list of applications based on their deadlines!_
 * The case of `SORT_ORDER` does not matter (e.g. `ASCENDING` and `ascending` are treated the same).
 </div>
 
-<div markdown="block" class="alert alert-info">
-**:information_source: Useful Tip:**<br>
+<div markdown="block" class="alert alert-success">
+**:bulb: Useful Tip:**<br>
 * If no `SORT_ORDER` is specified, it will default to `ascending`. Use this to quickly see which deadlines are 
 coming up soon by simply typing `sort`!
 </div>
@@ -767,17 +773,18 @@ and suggest the correct keyword to use:
 
 Encountered an unfamiliar term when using LinkMeIn? Read the respective descriptions to better understand the term!
 
-| Term             | Definition                                                                                                                                                                                                                          |
-|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Alphanumeric** | Alphanumeric refers to a character set that includes both letters and numbers. It includes the 26 letters of the English alphabet (both uppercase and lowercase) and the numbers 0 through 9.                                       |
-| **CLI**          | Command-Line Interface (CLI) is a text-based user interface where users interact with the application by typing commands.                                                                                                           |
-| **Command**      | A command is an instruction given by a user to LinkMeIn to perform a specific action. For example,`add` command is a command to add the company's application into LinkMeIn.                                                        |
-| **GUI**          | Graphical User Interface (GUI) is a visual method to interact with software using icons, buttons, and windows. GUI provides a user-friendly way to interact with software using graphical elements rather than text-based commands. |
-| **Index**        | Refers to the index number shown in the displayed company list                                                                                                                                                                      |
-| **JAR**          | JAR stands for Java Archive and is a package file format typically used to aggregate many Java class files and associated metadata and resources into one file for distribution.                                                    |
-| **JSON**         | JSON stands for JavaScript Object Notation. It is lightweight format for data interchange, easy to read and write for humans, and easy to parse for machines. Often used in web applications and configuration files.               |
-| **Parameter**    | Parameter is similar to a field in a form you have to fill up. For example, in the command `edit 1 c/COMPANY_NAME e/EMAIL`, `COMPANY_NAME` and `EMAIL` are parameters in the command.                                               |
-| **Prefix**       | Prefix is a keyword that is used to identify the parameter. For example, in the command `edit 1 c/COMPANY_NAME e/EMAIL`, `c/` and `e/` are prefixes.                                                                                |
+| Term                 | Definition                                                                                                                                                                                                                          |
+|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Alphanumeric**     | Alphanumeric refers to a character set that includes both letters and numbers. It includes the 26 letters of the English alphabet (both uppercase and lowercase) and the numbers 0 through 9.                                       |
+| **CLI**              | Command-Line Interface (CLI) is a text-based user interface where users interact with the application by typing commands.                                                                                                           |
+| **Command**          | A command is an instruction given by a user to LinkMeIn to perform a specific action. For example,`add` command is a command to add the company's application into LinkMeIn.                                                        |
+| **GUI**              | Graphical User Interface (GUI) is a visual method to interact with software using icons, buttons, and windows. GUI provides a user-friendly way to interact with software using graphical elements rather than text-based commands. |
+| **Index**            | Refers to the index number shown in the displayed company list                                                                                                                                                                      |
+| **JAR**              | JAR stands for Java Archive and is a package file format typically used to aggregate many Java class files and associated metadata and resources into one file for distribution.                                                    |
+| **JSON**             | JSON stands for JavaScript Object Notation. It is lightweight format for data interchange, easy to read and write for humans, and easy to parse for machines. Often used in web applications and configuration files.               |
+| **Parameter**        | Parameter is similar to a field in a form you have to fill up. For example, in the command `edit 1 c/COMPANY_NAME e/EMAIL`, `COMPANY_NAME` and `EMAIL` are parameters in the command.                                               |
+| **Prefix**           | Prefix is a keyword that is used to identify the parameter. For example, in the command `edit 1 c/COMPANY_NAME e/EMAIL`, `c/` and `e/` are prefixes.                                                                                |
+| **Case-insensitive** | Upper case and lower case are being treated the same way. For example, `tiktok` and `TikTok` will be considered the same.                                                                                                           |
 
 ### Parameters Description
 
@@ -877,6 +884,14 @@ Make sure you have Java 11 installed on your machine as the product only runs on
 An invalid index is a non-positive integer or an index greater than the number of companies you have.
 e.g -1, 0, a, \*, 1 0 (Only one index is allowed at a time). Positive index should not exceed the maximum allowed range
 of 2147483647.
+
+### 6. Do I need an internet connection to use LinkMeIn? 
+
+LinkMeIn is an offline application that functions well without an internet connection. However, an Internet connection is required to download the application.
+
+### 7. How do I save my data on LinkMeIn? 
+
+With LinkMeIn, there is no need for you to save manually. Everything is saved automatically for you.
 
 [&uarr; Back to Table of Contents](#table-of-contents)
 

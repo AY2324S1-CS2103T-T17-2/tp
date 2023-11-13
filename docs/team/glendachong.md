@@ -5,15 +5,9 @@ title: Glenda Chong Rui Ting's Project Portfolio Page
 
 # Project: LinkMeIn
 
-LinkMeIn is a desktop address book application for computer science students to track their internship applications.
-The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about
+LinkMeIn is a desktop address book application for NUS Computer Science students to track their internship applications.
+The user interacts with it using a Command Line Interface (CLI), and it has a Graphical User Interface (GUI) created with JavaFX. It is written in Java, and has about
 ~10 kLoC.
-
-
-The features in LinkMeIn can be categorised into 3 main categories:
-1. **General Features:** Navigating the application. Includes, help, exit and clear commands.
-2. **Company Management Features:** Manage the entry of a company. Includes, add, delete, edit, view, remark and unremark commands.
-3. **Company List Features:** Manage the list of companies added. Includes, list, find, sort and filter commands.
 
 ## Summary of Contributions
 
