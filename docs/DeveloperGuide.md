@@ -370,26 +370,33 @@ namely the company name, role and deadline fields to match that of another compa
 The purpose of the diagram is a **simplified** view of the message passing when a _duplicate_ company is detected.
 
 Therefore, the diagram omits the following
-1. The `if` statements in the `isSameCompany` method checking for strict equality with
-   `this` and company d with `null`. These blocks were added as a defensive programming measure and are
-   therefore removed to simplify the diagram.
-1. The `equals` method propagated to `Name`, `Role` and `Deadline` through the
-   `getName()`, `getRole()` and `getDeadline()` methods. This would involve the details of the
-   equality checks of the `Name`, `Role` and `Deadline` overcomplicating the diagram with 3 more classes.
+1. The `if` statement in the `EditCommand` class that checks if the edited company is the same as the company to be
+   edited before the call to `getDuplicateCompany(c)`. This is removed as the purpose of the diagram is to show the message
+   passing **after** a duplicate company is detected.
+1. The `if` statements in the `isSameCompany` method checking for strict equality with `this` and company d with`null`.
+   This is removed to simplify the diagram and not show the inner-workings of the method in detail.
+1. The `equals` method propagated after the `getName()`, `getRole()` and `getDeadline()` methods. Again, this would
+   involve the details of the equality checks of the `Name`, `Role` and `Deadline` classes which is not the focus of the
+   diagram.
+1. The instantiation of the `CommandException` class through the `super` call from `DuplicateException` class.
+   This is removed to simplify the diagram.
 
 **Description of the diagram**
 
+Upon ascertaining that the edited company is a duplicate,
 1. The `EditCommand` class calls the `getDuplicateCompany(c)` method in the `ModelManager` class.
 1. `ModelManager` forwards the call to the `AddressBook` class.
 1. The `AddressBook` class calls the `contains(c)` method in the `UniqueCompanyList` class.
 1. The `UniqueCompanyList` class calls the `Company::isSameCompany` method for each company in the list
    to check if the edited company is a duplicate.
-1. `Company c` self-invokes the `getName()`, `getRole()` and `getDeadline()` methods and also
-   invokes the `getName()`, `getRole()` and `getDeadline()` on `Company c` to check for equality.
+1. `Company::isSameCompany` self-invokes the `getName()`, `getRole()` and `getDeadline()` methods and also
+   invokes the `getName()`, `getRole()` and `getDeadline()` on the company d to check for equality.
 1. The duplicated company is returned to the `EditCommand` class.
+1. From there, the message is formatted by the `Messages` class using the `getDupErrMsgEdit()` method.
+1. The `EditCommand` class then instantiates a `DuplicateException` instance with the formatted message.
+1. Error is thrown back to the caller of the `EditCommand` class.
 
-Below is an activity diagram showing the events when a user attempts to **add**
-a duplicate company to the company list.
+Below is an activity diagram showing the events when a user attempts to **add** a duplicate company to the company list.
 
 <img src="images/duplicate-detection/add-command/DuplicateActivityDiagram.png"/>
 
@@ -414,7 +421,6 @@ getDuplicateCompany(toAdd) method, which has already been shown in the sequence 
       are identical, it likely indicates the same job application. The purpose of the duplicate detection is to prevent
       interns from inadvertently applying multiple times to the same position at a company with the same role and
       application deadline.
-
 
 ### Remark Feature
 
