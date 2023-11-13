@@ -23,7 +23,7 @@ activate AddressBookParser
 create FindCommandParser
 AddressBookParser -> FindCommandParser
 activate FindCommandParser
-FindCommandParser -> AddressBookParser
+FindCommandParser --> AddressBookParser
 deactivate FindCommandParser
 
 AddressBookParser -> FindCommandParser : parse("find tech sta")
