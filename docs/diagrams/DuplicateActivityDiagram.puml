@@ -3,20 +3,19 @@ skin rose
 skinparam ActivityFontSize 15
 skinparam ArrowFontSize 12
 start
-:Model already has duplicate company;
 
 'Since the beta syntax does not support placing the condition outside the
 'diamond we place it as the true branch instead.
 
-:getDuplicateCompany(toAdd)\n            from the model;
-:get the index of the duplicate company from the \n                 filtered company list panel;
+:Get the currently present duplicate\n        company from the model;
+:Get the index of the duplicate company from the \n                 filtered company list panel;
 if () then ([else])
-    :get the index of the duplicate company from the \n                 full company list panel;
-else ([Duplicate company is in filtered company list panel])
+    :Get the index of the duplicate company from the \n                     full company list panel;
+else ([Duplicate company is in the filtered \ncompany list panel])
     endif
 
-:       listAllChangedFields(duplicateCompany)\nformats the changed fields into a message string;
-:getErrorMessageForDuplicateCompanyAddCommand()\n                       formats the error message;
-:throw new DuplicateException(message);
+:       List the differing fields between the
+duplicate company and inputted company;
+:Format the error message;
 stop
 @enduml
