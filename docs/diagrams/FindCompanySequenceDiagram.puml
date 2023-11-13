@@ -20,6 +20,12 @@ activate LogicManager
 LogicManager -> AddressBookParser : parseCommand("find tech sta")
 activate AddressBookParser
 
+create FindCommandParser
+AddressBookParser -> FindCommandParser
+activate FindCommandParser
+FindCommandParser --> AddressBookParser
+deactivate FindCommandParser
+
 AddressBookParser -> FindCommandParser : parse("find tech sta")
 activate FindCommandParser
 
