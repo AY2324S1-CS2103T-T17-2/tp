@@ -7,11 +7,12 @@ participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
 participant ":FindCommandParser" as FindCommandParser LOGIC_COLOR
 participant "u:FindCommand" as FindCommand LOGIC_COLOR
+participant "u:CommandResult" as CommandResult LOGIC_COLOR
 participant "p :NameContainsKeywordsPredicate" as NameContainsKeywordsPredicate MODEL_COLOR
 end box
 
 box Model MODEL_COLOR_T1
-participant ":Model" as Model MODEL_COLOR
+participant "m:ModelManager" as Model MODEL_COLOR
 end box
 
 [-> LogicManager : execute("find tech sta")
@@ -40,18 +41,19 @@ create FindCommand
 FindCommandParser -> FindCommand
 activate FindCommand
 
-FindCommand --> FindCommandParser
+FindCommand --> FindCommandParser : u
 deactivate FindCommand
 
 FindCommandParser --> AddressBookParser : u
 deactivate FindCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
 FindCommandParser -[hidden]-> AddressBookParser
 destroy FindCommandParser
 
 AddressBookParser --> LogicManager : u
 deactivate AddressBookParser
 
-LogicManager -> FindCommand : execute()
+LogicManager -> FindCommand : execute(m)
 activate FindCommand
 
 FindCommand -> Model : updateFilteredCompanyList(p)
@@ -59,6 +61,13 @@ activate Model
 
 Model --> FindCommand
 deactivate Model
+
+create CommandResult
+FindCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> FindCommand
+deactivate CommandResult
 
 FindCommand --> LogicManager : result
 deactivate FindCommand

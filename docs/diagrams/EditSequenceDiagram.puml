@@ -37,7 +37,7 @@ create EditCompanyDescriptor
 EditCommandParser -> EditCompanyDescriptor
 activate EditCompanyDescriptor
 
-EditCompanyDescriptor --> EditCommandParser : c
+EditCompanyDescriptor -> EditCommandParser : c
 deactivate EditCompanyDescriptor
 
 create EditCommand

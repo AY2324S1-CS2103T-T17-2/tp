@@ -4,6 +4,9 @@ skinparam ArrowFontStyle plain
 
 box "Logic" LOGIC_COLOR_T1
 participant ":EditCommand" as EditCommand LOGIC_COLOR
+participant "<<class>>\nMessages" as Messages LOGIC_COLOR
+participant ":DuplicateException" as DuplicateException LOGIC_COLOR
+'participant ":CommandException" as CommandException LOGIC_COLOR
 end box
 
 box "Model" MODEL_COLOR_T1
@@ -14,6 +17,7 @@ participant "c:Company" as CompanyC MODEL_COLOR
 participant "d:Company" as CompanyD MODEL_COLOR
 end box
 
+[-> EditCommand : execute()
 activate EditCommand
 
 EditCommand -> ModelManager : getDuplicateCompany(c)
@@ -72,6 +76,29 @@ deactivate AddressBook
 ModelManager --> EditCommand
 deactivate ModelManager
 
+EditCommand -> Messages : getDupErrMsgEdit()
+activate Messages
+
+Messages --> EditCommand
+deactivate Messages
+
+create DuplicateException
+EditCommand -> DuplicateException : DuplicateException()
+activate DuplicateException
+'
+'create CommandException
+'DuplicateException -> CommandException : super()
+'activate CommandException
+'
+'CommandException --> DuplicateException
+'deactivate CommandException
+'
+DuplicateException --> EditCommand
+deactivate DuplicateException
+
+EditCommand -->[
 deactivate EditCommand
+'EditCommand [hidden]--> CommandException
+'destroy EditCommand
 
 @enduml
